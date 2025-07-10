@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SmartCart Optimizer</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <script>
+        // Define API base URL for browser environment
+        window.API_BASE_URL = 'http://127.0.0.1:5000';
+    </script>
+</head>
+<body>
+    <div class="background-decoration"></div>
+    
+    <div id="app-container">
+        <header>
+            <div class="header-content">
+                <div class="logo-container">
+                    <div class="logo-icon">🛒</div>
+                    <h1>SmartCart Optimizer</h1>
+                </div>
+                <p>AI-powered shopping route optimizer for Supermarkets</p>
+            </div>
+        </header>
+
+        <div class="main-content">
+            <div class="left-panel">
+                <div id="shopping-list-container" class="glass-card">
+                    <div class="card-header">
+                        <h2>Your Shopping List</h2>
+                        <div class="item-count">
+                            <span id="item-count-badge">0</span>
+                        </div>
+                    </div>
+                    <form id="shopping-list-form">
+                        <div class="input-group">
+                            <input type="text" id="item-input" placeholder="Add item to shopping list" aria-label="Add item to shopping list" list="supported-items-list">
+                            <button type="submit" id="add-item-btn">
+                                <span>+</span>
+                            </button>
+                        </div>
+                    </form>
+                    <ul id="shopping-list" class="shopping-list-items"></ul>
+                </div>
+
+                <div id="statistics-panel" class="glass-card">
+                    <div class="card-header">
+                        <h2>Route Statistics</h2>
+                    </div>
+                    <div class="stats-grid">
+                        <div class="stat-item">
+                            <div class="stat-icon">📏</div>
+                            <div class="stat-content">
+                                <div class="stat-value" id="distance-value">0</div>
+                                <div class="stat-label">Distance (m)</div>
+                            </div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-icon">⏱️</div>
+                            <div class="stat-content">
+                                <div class="stat-value" id="time-value">0</div>
+                                <div class="stat-label">Time (min)</div>
+                            </div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-icon">💰</div>
+                            <div class="stat-content">
+                                <div class="stat-value" id="savings-value">0</div>
+                                <div class="stat-label">Savings (%)</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="directions-panel" class="glass-card">
+                    <div class="card-header">
+                        <h2>Step-by-Step Directions</h2>
+                    </div>
+                    <ol id="directions-list" aria-live="polite" class="directions-list"></ol>
+                </div>
+            </div>
+
+            <div class="right-panel">
+                <div id="store-map-panel" class="glass-card map-container">
+                    <div class="card-header">
+                        <h2>Store Layout</h2>
+                        <div class="map-controls">
+                            <button id="optimize-btn" class="optimize-button">
+                                <span class="button-text">Optimize Route</span>
+                                <span class="button-icon">✨</span>
+                            </button>
+                        </div>
+                    </div>
+
+                    <div id="store-map" role="img" aria-label="Supermarket layout map showing shelves, entrance, exit, and item pins"></div>
+                    <div id="error-message" class="error-message hidden"></div>
+                    <div id="loading-spinner" class="loading-spinner hidden">
+                        <div class="spinner"></div>
+                        <p>Optimizing your route...</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>Made with ❤️ for Hackathon</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
